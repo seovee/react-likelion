@@ -13,6 +13,16 @@ class Home extends React.Component {
     });
   };
 
+  handleFilterLab = (labNumber) => {
+    // 나는 무슨 일을 해야 하는가?
+    // 데이터 분석
+    // 어떻게 걸러낼 것인가?
+    // 걸러내는 프로그래밍 로직은?
+    this.setState({
+      members: this.state.members.filter((member) => member.lab === labNumber),
+    });
+  };
+
   render() {
     return (
       <React.Fragment>

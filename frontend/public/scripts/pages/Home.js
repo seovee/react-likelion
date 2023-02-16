@@ -37,6 +37,17 @@ var Home = /*#__PURE__*/function (_React$Component) {
         })
       });
     });
+    _defineProperty(_assertThisInitialized(_this), "handleFilterLab", function (labNumber) {
+      // 나는 무슨 일을 해야 하는가?
+      // 데이터 분석
+      // 어떻게 걸러낼 것인가?
+      // 걸러내는 프로그래밍 로직은?
+      _this.setState({
+        members: _this.state.members.filter(function (member) {
+          return member.lab === labNumber;
+        })
+      });
+    });
     return _this;
   }
   _createClass(Home, [{

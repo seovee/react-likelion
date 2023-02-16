@@ -1,7 +1,14 @@
+<<<<<<< HEAD
 import LogIn from "./pages/LogIn.js";
 import Browse from "./pages/Browse.js";
 import Home from "./pages/Home.js";
 import { likeLionMembers } from "./data/likeLionMembers.js";
+=======
+import LogIn from './pages/LogIn.js';
+import Browse from './pages/Browse.js';
+import Home from './pages/Home.js';
+import { likeLionMembers } from './data/likeLionMembers.js';
+>>>>>>> c5a4bbd30c24fe4a7a3ec21ac32d27a09344db6f
 
 class App extends React.Component {
   state = {
@@ -10,7 +17,11 @@ class App extends React.Component {
     isToggle: false,
     isLoading: !true,
     hasError: null,
+<<<<<<< HEAD
     likeLionMembers,
+=======
+    likeLionMembers
+>>>>>>> c5a4bbd30c24fe4a7a3ec21ac32d27a09344db6f
   };
 
   originalHeadline = this.state.headline;
@@ -31,7 +42,18 @@ class App extends React.Component {
   };
 
   render() {
+<<<<<<< HEAD
     const { isLoading, isToggle, isPaid, headline, hasError, likeLionMembers } = this.state;
+=======
+    const { 
+      isLoading, 
+      isToggle, 
+      isPaid, 
+      headline, 
+      hasError, 
+      likeLionMembers 
+    } = this.state;
+>>>>>>> c5a4bbd30c24fe4a7a3ec21ac32d27a09344db6f
 
     if (isLoading) {
       return <div role="alert">데이터 로딩 중...</div>;
