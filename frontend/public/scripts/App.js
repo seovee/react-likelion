@@ -12,9 +12,10 @@ function _getPrototypeOf(o) { _getPrototypeOf = Object.setPrototypeOf ? Object.g
 function _defineProperty(obj, key, value) { key = _toPropertyKey(key); if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 function _toPropertyKey(arg) { var key = _toPrimitive(arg, "string"); return _typeof(key) === "symbol" ? key : String(key); }
 function _toPrimitive(input, hint) { if (_typeof(input) !== "object" || input === null) return input; var prim = input[Symbol.toPrimitive]; if (prim !== undefined) { var res = prim.call(input, hint || "default"); if (_typeof(res) !== "object") return res; throw new TypeError("@@toPrimitive must return a primitive value."); } return (hint === "string" ? String : Number)(input); }
-import LogIn from './pages/LogIn.js';
-import Browse from './pages/Browse.js';
-import Home from './pages/Home.js';
+import LogIn from "./pages/LogIn.js";
+import Browse from "./pages/Browse.js";
+import Home from "./pages/Home.js";
+import { likeLionMembers } from "./data/likeLionMembers.js";
 var App = /*#__PURE__*/function (_React$Component) {
   _inherits(App, _React$Component);
   var _super = _createSuper(App);
@@ -26,14 +27,15 @@ var App = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
-      headline: 'React Application',
+      headline: "React Application",
       isPaid: true,
       isToggle: false,
       isLoading: !true,
-      hasError: null
+      hasError: null,
+      likeLionMembers: likeLionMembers
     });
     _defineProperty(_assertThisInitialized(_this), "originalHeadline", _this.state.headline);
-    _defineProperty(_assertThisInitialized(_this), "willUpdateHeadline", 'NEW HEADLINE! 😃');
+    _defineProperty(_assertThisInitialized(_this), "willUpdateHeadline", "NEW HEADLINE! 😃");
     _defineProperty(_assertThisInitialized(_this), "handleChangeHeadline", function () {
       if (_this.state.isToggle) {
         _this.setState({
@@ -57,7 +59,8 @@ var App = /*#__PURE__*/function (_React$Component) {
         isToggle = _this$state.isToggle,
         isPaid = _this$state.isPaid,
         headline = _this$state.headline,
-        hasError = _this$state.hasError;
+        hasError = _this$state.hasError,
+        likeLionMembers = _this$state.likeLionMembers;
       if (isLoading) {
         return /*#__PURE__*/React.createElement("div", {
           role: "alert"
@@ -68,13 +71,15 @@ var App = /*#__PURE__*/function (_React$Component) {
           role: "alert"
         }, hasError.message);
       }
-      return /*#__PURE__*/React.createElement(Home, null);
+      return /*#__PURE__*/React.createElement(Home, {
+        likeLionMembers: likeLionMembers
+      });
       return /*#__PURE__*/React.createElement("div", {
         className: "App"
       }, /*#__PURE__*/React.createElement("h1", null, headline), /*#__PURE__*/React.createElement("button", {
         type: "button",
         onClick: this.handleChangeHeadline
-      }, isToggle ? '오리지널 헤드라인으로 변경' : '뉴 헤드라인으로 변경'), /*#__PURE__*/React.createElement(LogIn, null), isPaid && /*#__PURE__*/React.createElement(Browse, null));
+      }, isToggle ? "오리지널 헤드라인으로 변경" : "뉴 헤드라인으로 변경"), /*#__PURE__*/React.createElement(LogIn, null), isPaid && /*#__PURE__*/React.createElement(Browse, null));
     }
   }]);
   return App;

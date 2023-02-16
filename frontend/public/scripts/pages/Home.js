@@ -16,6 +16,7 @@ var Home = /*#__PURE__*/function (_React$Component) {
   _inherits(Home, _React$Component);
   var _super = _createSuper(Home);
   function Home() {
+    var _this$props$likeLionM;
     var _this;
     _classCallCheck(this, Home);
     for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
@@ -23,39 +24,65 @@ var Home = /*#__PURE__*/function (_React$Component) {
     }
     _this = _super.call.apply(_super, [this].concat(args));
     _defineProperty(_assertThisInitialized(_this), "state", {
-      products: [{
-        id: 'product-dkfj',
-        name: '웰치스',
-        price: 980,
-        image: 'https://img.danawa.com/prod_img/500000/648/889/img/16889648_1.jpg?shrink=500:500&_v=20221021170923'
-      }, {
-        id: 'product-ekdi',
-        name: '두부 1kg',
-        price: 2180,
-        image: 'https://contents.lotteon.com/itemimage/_v105312/LF/14/37/17/3_/0/LF1437173_0_2.jpg/dims/resizef/720X720'
-      }]
+      members: (_this$props$likeLionM = _this.props.likeLionMembers) !== null && _this$props$likeLionM !== void 0 ? _this$props$likeLionM : []
+    });
+    _defineProperty(_assertThisInitialized(_this), "handleFilterLab", function (labNumber) {
+      // 나는 무슨 일을 해야 하는가?
+      // 데이터 분석
+      // 어떻게 걸러낼 것인가?
+      // 걸러내는 프로그래밍 로직은?
+      _this.setState({
+        members: _this.state.members.filter(function (member) {
+          return member.lab === labNumber;
+        })
+      });
     });
     return _this;
   }
   _createClass(Home, [{
     key: "render",
     value: function render() {
-      var products = this.state.products;
-      console.log(products[0]);
-      console.log(products[1]);
-      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "\uB9AC\uC2A4\uD2B8 \uB80C\uB354\uB9C1"), /*#__PURE__*/React.createElement("ul", null, /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("figure", {
-        "data-id": products[0].id
-      }, /*#__PURE__*/React.createElement("img", {
-        src: products[0].image,
-        height: 100,
-        alt: true
-      }), /*#__PURE__*/React.createElement("figcaption", null, /*#__PURE__*/React.createElement("span", null, products[0].name), /*#__PURE__*/React.createElement("span", null, products[0].price)))), /*#__PURE__*/React.createElement("li", null, /*#__PURE__*/React.createElement("figure", {
-        "data-id": products[1].id
-      }, /*#__PURE__*/React.createElement("img", {
-        src: products[1].image,
-        height: 100,
-        alt: true
-      }), /*#__PURE__*/React.createElement("figcaption", null, /*#__PURE__*/React.createElement("span", null, products[1].name), /*#__PURE__*/React.createElement("span", null, products[1].price))))));
+      var _this2 = this,
+        _this$state;
+      return /*#__PURE__*/React.createElement(React.Fragment, null, /*#__PURE__*/React.createElement("h2", null, "\uBA4B\uC7C1\uC774 \uC0AC\uC790\uCC98\uB7FC \uD504\uB860\uD2B8\uC5D4\uB4DC \uC2A4\uCFE8 4\uAE30 \uBA64\uBC84"), /*#__PURE__*/React.createElement("div", {
+        role: "group",
+        style: {
+          display: "flex",
+          gap: 8
+        }
+      }, /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        style: {
+          marginBottom: 20
+        },
+        onClick: function onClick() {
+          return _this2.handleFilterLab(4);
+        }
+      }, "LAB 4\uC870 \uBAA8\uC5EC!"), /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        style: {
+          marginBottom: 20
+        },
+        onClick: function onClick() {
+          return _this2.handleFilterLab(10);
+        }
+      }, "LAB 10\uC870 \uBAA8\uC5EC!"), /*#__PURE__*/React.createElement("button", {
+        type: "button",
+        style: {
+          marginBottom: 20
+        },
+        onClick: function onClick() {
+          return _this2.handleFilterLab(2);
+        }
+      }, "LAB 2\uC870 \uBAA8\uC5EC!")), /*#__PURE__*/React.createElement("ul", null, (_this$state = this.state) === null || _this$state === void 0 ? void 0 : _this$state.members.map(function (_ref) {
+        var id = _ref.id,
+          lab = _ref.lab,
+          name = _ref.name,
+          gender = _ref.gender;
+        return /*#__PURE__*/React.createElement("li", {
+          key: id
+        }, /*#__PURE__*/React.createElement("p", null, /*#__PURE__*/React.createElement("b", null, lab), " ", /*#__PURE__*/React.createElement("span", null, gender !== null && gender !== void 0 && gender.includes("여성") ? "🙆🏻‍♀️" : "🙆🏻‍♂️"), " ", name));
+      })));
     }
   }]);
   return Home;

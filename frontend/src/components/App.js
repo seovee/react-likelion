@@ -1,19 +1,22 @@
+import LogIn from "./pages/LogIn.js";
+import Browse from "./pages/Browse.js";
+import Home from "./pages/Home.js";
+import { likeLionMembers } from "./data/likeLionMembers.js";
+
 class App extends React.Component {
   state = {
     headline: "React Application",
-    // isDisabled: false,
+    isPaid: true,
     isToggle: false,
-    isLoading: false,
+    isLoading: !true,
+    hasError: null,
+    likeLionMembers,
   };
 
   originalHeadline = this.state.headline;
   willUpdateHeadline = "NEW HEADLINE! 😃";
 
   handleChangeHeadline = () => {
-    let assignHeadlineContent = "";
-
-    // 조건 처리
-    // 문을 사용할 것인가?
     if (this.state.isToggle) {
       this.setState({
         isToggle: false,
@@ -25,35 +28,35 @@ class App extends React.Component {
         headline: this.willUpdateHeadline,
       });
     }
-
-    // 아니면 식을 사용할 것인가?
-
-    // this.setState({
-    //   headline: 'NEW HEADLINE! 😃',
-    //   isDisabled: true,
-    // });
   };
 
   render() {
-    const { isToggle, headline } = this.state;
+    const { isLoading, isToggle, isPaid, headline, hasError, likeLionMembers } = this.state;
 
-    if (this.state.isLoading) {
+    if (isLoading) {
       return <div role="alert">데이터 로딩 중...</div>;
     }
 
+    if (hasError) {
+      return <div role="alert">{hasError.message}</div>;
+    }
+
+    return <Home likeLionMembers={likeLionMembers} />;
+
     return (
-      <div data-component="App">
+      <div className="App">
         <h1>{headline}</h1>
-        <button
-          // disabled={this.state.isDisabled}
-          type="button"
-          onClick={this.handleChangeHeadline}
-        >
+        <button type="button" onClick={this.handleChangeHeadline}>
           {isToggle ? "오리지널 헤드라인으로 변경" : "뉴 헤드라인으로 변경"}
         </button>
+
+        <LogIn />
+
+        {isPaid && <Browse />}
       </div>
     );
   }
 }
 
 export default App;
+ㅋㅋ;
